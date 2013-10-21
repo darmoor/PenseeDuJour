@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta charset='utf8'>
+<html>
+<head>
+	<title>Pensée du jour</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<h1>Votre pensée du jour</h1>
+
+<div id="saisi">
+	<p>
+		<label>Votre pensée</label>
+		<input type="text" class="text-center input-block-level" id="idee" placeholder="">
+	</p>
+
+	<p>
+		<button class="btn btn-primary btn-block" align="center" id="valider">Valider</button>
+	</p>
+</div>
+
+<hr>
+
+<p>
+	<div id="pensee">
+	</div>
+</p>
+
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+
+<script type="text/javascript">
+
+	$("#valider").click(function() {
+		$("#pensee").append("<p class='penseePut'>" + $("#idee").val() + "</p>");
+		$(".penseePut").last().hide();
+		$(".penseePut").last().slideToggle();
+	});
+
+</script>
+
+</body>
+</html>
