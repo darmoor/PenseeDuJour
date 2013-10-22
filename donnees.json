@@ -1,0 +1,17 @@
+{
+	"pensees": [
+		{
+			"auteur" : "Monsieur 1",
+			"texte"  : "bla bla de monsieur 1"
+		},
+		{
+			"auteur" : "Monsieur 2",
+			"texte"  : "bla bla de monsieur 2"
+		},
+		{
+			"auteur" : "Monsieur 3",
+			"texte"  : "bla bla de monsieur 3"
+		}
+		
+	]
+}

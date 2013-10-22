@@ -14,11 +14,12 @@
 <div id="saisi">
 	<p>
 		<label>Votre pensée</label>
-		<input type="text" class="text-center input-block-level" id="idee" placeholder="">
+		<input type="text" class="text-center input-block-level" id="idee" placeholder="" />
 	</p>
 
 	<p>
 		<button class="btn btn-primary btn-block" align="center" id="valider">Valider</button>
+		<button class="btn btn-primary btn-block" align="center" id="json">json</button>
 	</p>
 </div>
 
@@ -35,11 +36,41 @@
 
 <script type="text/javascript">
 
-	$("#valider").click(function() {
-		$("#pensee").append("<p class='penseePut'>" + $("#idee").val() + "</p>");
-		$(".penseePut").last().hide();
-		$(".penseePut").last().slideToggle();
+$("#valider").click(function() {
+
+	$("#pensee").append("<p class='penseePut'>" + $("#idee").val() + "</p>");
+	$(".penseePut").last().hide();
+	$(".penseePut").last().slideToggle();
+
+	$.post("http://pro.timbreos.com/api/donnees.php",
+		{ "texte" : $("#idee").val() },
+		function(data){
+			console.log(data[0].id); // John
+		},
+		"json"
+	);
+
+});
+
+
+$("#json").click(function() {
+
+	$.ajax({
+		url:"http://pro.timbreos.com/api/donnees.php?test=test&callback=?",
+		dataType: 'jsonp', // Notice! JSONP <-- P (lowercase)
+		success:function(json){
+		 // do stuff with json (in this case an array)
+			for (i in json) {   
+				 $("#pensee").append("<p> Id :" + json[i].id + "<br>Texte :" + json[i].texte + "</p>");
+			}
+
+		},
+		error:function(){
+			alert("Error");
+		},
 	});
+
+});
 
 </script>
 
